@@ -1,0 +1,26 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: ace-itx-ue
+  namespace: cp4i
+  labels:
+    app: ace-itx-ue
+spec:
+  source:
+    type: Git
+    git:
+      ref: master
+      uri: https://github.com/efir-tractatus/ace-itx-ue-cp4i.git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: DockerfileBC
+      pullSecret:
+        name: "ibm-entitlement-key"
+      buildArgs:
+        - name: "ITX_URL"
+          value: "<URL for ITX bundle, part number M0519ML>"
+  output:
+    to:
+      kind: ImageStreamTag
+      name: ace-itx-ue:latest

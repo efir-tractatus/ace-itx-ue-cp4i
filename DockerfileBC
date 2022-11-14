@@ -1,0 +1,35 @@
+FROM cp.icr.io/cp/appc/ace-server-prod:12.0.5.0-r2-20220725-153735@sha256:a61d6f4a442811b59c43e2a5af7014ffb66d8b6dd8b084ac998279d3ccf702bf
+
+USER root
+
+ARG ITX_URL
+
+# Loading MQ libs
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mqm/lib64
+
+#ITX budle
+RUN mkdir /opt/ibm/itx \
+    && mkdir -p /tmp/itx/inst \
+    && curl ${ITX_URL} --output /tmp/itx/ITX_LINX86.zip \
+    && unzip -j -d /tmp/itx/ /tmp/itx/ITX_LINX86.zip \
+    && tar zx --directory /tmp/itx/inst/ -f /tmp/itx/*.tar.gz \
+    && cp -a /tmp/itx/inst/. /opt/ibm/itx \
+    && sed -i 's+%REPLACE_TXHOMEDIR%+/opt/ibm/itx+g' /opt/ibm/itx/wmqi/dtxwmqi.sh \
+    && rm -r /tmp/itx
+
+# C library required for ITX operation
+COPY libs/libnsl-2.28.so /lib64/
+RUN ln -s /lib64/libnsl-2.28.so /lib64/libnsl.so.1 \
+    && cp /opt/ibm/itx/wmqi/dtxwmqi.sh /var/mqsi/common/profiles/ \
+    && chown -R aceuser:aceuser /var/mqsi/common/profiles/ \ 
+    && chown -R aceuser:aceuser /opt/ibm/itx
+
+# User exit
+COPY userexit/WMBTM.lel /var/mqsi/exits/
+RUN mkdir /var/mqsi/WMBTM
+
+# Testing ITX
+USER aceuser
+RUN mkdir -p /home/aceuser/data/file_in \ 
+    && mkdir -p /home/aceuser/data/file_out \
+    && chmod -R 777 /home/aceuser/data

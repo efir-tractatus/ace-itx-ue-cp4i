@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: user-exit
+  namespace: cp4i
+data:
+  MQSI_USER_EXIT_CHLNAME: SYSTEM.DEF.SVRCONN
+  MQSI_USER_EXIT_CONNAME: ue-qm-ibm-mq.cp4i.svc.cluster.local(1414)
+  MQSI_USER_EXIT_QMNAME: QUICKSTART
+  MQSI_USER_EXIT_QNAME: userExit
+  config.mqsc: |
+    DEFINE QLOCAL('userExit')
+    ALTER QMGR CHLAUTH(DISABLED)

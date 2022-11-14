@@ -1,0 +1,35 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: ue-qm
+  namespace: cp4i
+spec:
+  license:
+    accept: true
+    license: L-RJON-CD3JKX
+    use: NonProduction
+  queueManager:
+    name: QUICKSTART
+    resources:
+      limits:
+        cpu: 500m
+      requests:
+        cpu: 500m
+    storage:
+      queueManager:
+        type: ephemeral
+    mqsc:
+      - configMap:
+          name: user-exit
+          items:
+            - config.mqsc
+  template:
+    pod:
+      containers:
+        - env:
+            - name: MQSNOAUT
+              value: "yes"
+          name: qmgr
+  version: 9.3.1.0-r1
+  web:
+    enabled: true

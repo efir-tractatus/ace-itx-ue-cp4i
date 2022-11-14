@@ -1,0 +1,8 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: ace-itx-ue
+  namespace: cp4i
+spec:
+  lookupPolicy:
+    local: false

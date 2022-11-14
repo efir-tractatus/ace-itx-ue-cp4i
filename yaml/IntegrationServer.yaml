@@ -1,0 +1,64 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: ace-itx-ue
+  namespace: cp4i
+spec:
+  adminServerSecure: true
+  createDashboardUsers: true
+  designerFlowsOperationMode: disabled
+  enableMetrics: true
+  license:
+    accept: true
+    license: L-APEH-CCHL5W
+    use: CloudPakForIntegrationNonProduction
+  pod:
+    containers:
+      runtime:
+        resources:
+          limits:
+            cpu: 300m
+            memory: 368Mi
+          requests:
+            cpu: 300m
+            memory: 368Mi
+        image: image-registry.openshift-image-registry.svc:5000/cp4i/ace-itx-ue
+        imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /home/aceuser/maps
+            name: maps-volume
+    volumes:
+      - name: maps-volume
+        persistentVolumeClaim:
+          claimName: itx-maps
+  env:
+    - name: MQSI_USER_EXIT_QMNAME
+      valueFrom:
+        configMapKeyRef:
+          name: user-exit
+          key: MQSI_USER_EXIT_QMNAME
+    - name: MQSI_USER_EXIT_QNAME
+      valueFrom:
+        configMapKeyRef:
+          name: user-exit
+          key: MQSI_USER_EXIT_QNAME
+    - name: MQSI_USER_EXIT_CONNAME
+      valueFrom:
+        configMapKeyRef:
+          name: user-exit
+          key: MQSI_USER_EXIT_CONNAME
+    - name: MQSI_USER_EXIT_CHLNAME
+      valueFrom:
+        configMapKeyRef:
+          name: user-exit
+          key: MQSI_USER_EXIT_CHLNAME
+  replicas: 1
+  router:
+    timeout: 120s
+  service:
+    endpointType: http
+  version: 12.0.5.0-r2
+  barURL: >-
+    https://db-01-quickstart-dash:3443/v1/directories/External_ITX_Map?f792120c-da19-4506-8c17-2d26d54ccb6b
+  configurations:
+    - user-exit

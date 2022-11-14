@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: itx-map-pv-loader
+  namespace: cp4i
+spec:
+  containers:
+    - name: toolbox
+      image: registry.access.redhat.com/ubi8/toolbox@sha256:a753c24cb8b03066d494f010ad654d23fb0559f14d7121542298da3e0d48340d
+      command: ["/bin/sh", "-c", "while true ; do date; sleep 1; done;"]
+      securityContext:
+        runAsUser: 738
+      volumeMounts:
+        - mountPath: /maps
+          name: maps-volume
+  volumes:
+    - name: maps-volume
+      persistentVolumeClaim:
+        claimName: itx-maps
+  restartPolicy: Never
