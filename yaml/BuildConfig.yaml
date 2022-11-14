@@ -9,7 +9,7 @@ spec:
   source:
     type: Git
     git:
-      ref: master
+      ref: main
       uri: https://github.com/efir-tractatus/ace-itx-ue-cp4i.git
   strategy:
     type: Docker
