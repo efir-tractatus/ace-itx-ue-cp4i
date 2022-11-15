@@ -1,4 +1,4 @@
-# App Connect Enterprise 12.0.5.0-r2 with ITX 10.1 & UserExists on CP4I
+# App Connect Enterprise 12.0.5.0-r2 with ITX 10.1 & UserExits on CP4I
 
 ## Overview
 This repo showcases how to run a custom IBM ACE (App Connect Enterprise) container with ITX on OCP.  This documentation is designed to demonstrate how to lift & shift bar files for ACE flows running on-premises and seamlessly deploy them on OCP's Cloud Pak for Integration.  
