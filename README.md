@@ -23,7 +23,7 @@ This repo includes the following:
 - IBM App Connect 5.1.0 Operator w/ Quickstart Dashboard instance
 - IBM MQ 2.1.0 Operator
 - IBM Sterling Transformation Extender Runtime and Monitoring V10.1.1 Linux x86 Multilingual (Part number `M0519ML`)
-- [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html)
+- [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) or OpenShift Web Console
 
 *All operators and instances were deployed to the `cp4i` namespace*  
 *All terminal commands below are to be executed from the root of the repo*  
@@ -31,6 +31,14 @@ This repo includes the following:
 *******************************************************************************************************************************************************************
 
 ## Deployment Steps
+
+Option 1: All terminal commands below, except for *Testing*, can be executed in the OpenShift Web Console by clicking on the "**+**" button located on the top right corner and pasting the contents of the below referenced yaml files
+
+Option 2: To issue the commands below in your terminal, you will need to install the [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) and procure the cluster login command in the OpenShift Web Console:
+- On the top right corner click on your username
+- Copy Login Command
+- Display Token
+- Log in with this token
 
 ### 1. Building `IntegrationServer` custom image  
 
