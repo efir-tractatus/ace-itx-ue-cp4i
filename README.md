@@ -23,7 +23,6 @@ This repo includes the following:
 - IBM App Connect 5.1.0 Operator w/ Quickstart Dashboard instance
 - IBM MQ 2.1.0 Operator
 - IBM Sterling Transformation Extender Runtime and Monitoring V10.1.1 Linux x86 Multilingual (Part number `M0519ML`)
-- [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) or OpenShift Web Console
 
 *All operators and instances were deployed to the `cp4i` namespace*  
 *All terminal commands below are to be executed from the root of the repo*  
