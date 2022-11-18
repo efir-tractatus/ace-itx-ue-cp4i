@@ -33,11 +33,11 @@ This repo includes the following:
 
 Option 1: All terminal commands below, except for *Testing*, can be executed in the OpenShift Web Console by clicking on the "**+**" button located on the top right corner and pasting the contents of the below referenced yaml files
 
-Option 2: To issue the commands below in your terminal, you will need to install the [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) and procure the cluster login command in the OpenShift Web Console:
-a. On the top right corner click on your username
-b. Copy Login Command
-c. Display Token
-d. Log in with this token
+Option 2: To issue the commands below in your terminal, you will need to install the [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) and procure the cluster login command in the OpenShift Web Console:  
+a. On the top right corner click on your username  
+b. Copy Login Command  
+c. Display Token  
+d. Log in with this token  
 
 ### 1. Building `IntegrationServer` custom image  
 
