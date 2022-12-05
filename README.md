@@ -46,11 +46,15 @@ d. Log in with this token
 <br>
 
 > If using this option make sure you have the proper credentials in place for github & ibm cloud pak image repository.  
-> Update github-credentials in the yaml directory & create the secret  
+> 
+> Create github-credentials secret  
 > ``` 
-> oc create -f yaml/github-credentials.yaml
+>  oc create secret generic github-credentials \ 
+>    --from-literal=username=<user_name> \ 
+>    --from-literal=password=<password> \ 
+>    --type=kubernetes.io/basic-auth \
+>    --namespace=cp4i
 > ```
-> ![github_credentials](assets/github_credentials.png)
 > 
 > Create ibm-entitlement-key secret
 >  ```
@@ -60,7 +64,6 @@ d. Log in with this token
 >    --docker-server=cp.icr.io \
 >    --namespace=cp4i
 >  ```
-> ![entitlement_key_secret](assets/entitlement_key_secret.png) 
 
 <br>
 
