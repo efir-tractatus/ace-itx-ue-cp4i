@@ -11,8 +11,8 @@ COPY itx /opt/ibm/itx
 COPY libs/libnsl-2.28.so /lib64/
 RUN ln -s /lib64/libnsl-2.28.so /lib64/libnsl.so.1 \
     && cp /opt/ibm/itx/wmqi/dtxwmqi.sh /var/mqsi/common/profiles/ \
-    && chown -R aceuser:aceuser /var/mqsi/common/profiles/ \ 
-    && chown -R aceuser:aceuser /opt/ibm/itx
+    && chmod -R 777 /var/mqsi/common/profiles/ \ 
+    && chmod -R 777 /opt/ibm/itx
 
 # User exit injection
 RUN mkdir /var/mqsi/WMBTM
