@@ -227,18 +227,12 @@ Navigate to Workloads -> Secrets -> ibm-iam-bindinfo-platform-auth-idp-credentia
 
 ### 5. Testing  
 
-**a. Start ITX flow**  
-Select the `ace-itx-ue` Server Tile -> `ACE_ITX_Container_Test` Application Tile -> click breadcrumb for `ITX_FILE_Docker` and select `Setup` (*note: ignore error*) -> click breadcrumb for `ITX_FILE_Docker` and select `Start`
-![start_itx_flow](assets/start_itx_flow.png)
-
-<br>
-
-**b. Log into terminal**  
+**a. Log into terminal**  
 In OCP, open Pod `ace-itx-ue-is-...` and select `Terminal` tab  
 
 <br>
 
-**c. Run test**  
+**b. Run test**  
   Change directory to `cd /home/aceuser/data/file_in` -> create test file `echo "test map" > test.txt` -> change directory to `cd /home/aceuser/data/file_out` -> confirm transformation is successful `cat ITX_output.txt`
 
 ![test_output](assets/test_output.png)
