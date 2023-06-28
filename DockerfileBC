@@ -1,4 +1,4 @@
-FROM cp.icr.io/cp/appc/ace-server-prod:12.0.5.0-r2-20220725-153735@sha256:a61d6f4a442811b59c43e2a5af7014ffb66d8b6dd8b084ac998279d3ccf702bf
+FROM cp.icr.io/cp/appc/ace-server-prod:12.0.7.0-r4-20230222-094320@sha256:558e2d74fdd4ea291d56eab1360167294e3385defa7fe1f4701b27dbb6e6bba6
 
 USER root
 
